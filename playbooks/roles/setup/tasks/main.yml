@@ -1,0 +1,4 @@
+- name: install python-apt
+  become: true
+  become_user: root
+  shell: "apt install python-apt -y"

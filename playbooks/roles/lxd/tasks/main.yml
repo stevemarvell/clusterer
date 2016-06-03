@@ -1,0 +1,36 @@
+- name: install LXD
+  become: true
+  become_user: root
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - lxc
+    - python
+    - python-lxc
+
+- name: Create a started container
+  become: true
+  become_user: root
+  lxc_container:
+    name: test-container-started
+    container_log: true
+    template: ubuntu
+    state: started
+    template_options: --release trusty
+
+- name: Destroy a container
+  lxc_container:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - test-container-stopped
+    - test-container-started
+    - test-container-frozen
+    - test-container-lvm
+    - test-container-config
+    - test-container-overlayfs
+    - test-container-overlayfs-clone
+    - test-container-overlayfs-clone-snapshot
+    - test-container-overlayfs-clone-snapshot2
+    - test-container-new-archive
+    - test-container-new-archive-clone
+    - test-container-new-archive-destroyed-clone

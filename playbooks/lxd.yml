@@ -1,0 +1,6 @@
+---
+- name: lxd
+  hosts: nodes
+  roles:
+    - setup
+    - lxd
