@@ -1,0 +1,10 @@
+# Emacs
+*.elc
+*~
+
+# Packaging
+.cask
+
+# ansible key
+ansible_rsa
+ansible_rsa.pub
