@@ -193,3 +193,126 @@ redmine-ubuntu.		0	IN	A	10.177.161.158
 system@biscuit:~$ 
 
 /etc/resolvconf/resolv.conf.d/head is a kludge
+
+
+----------
+
+apt-add-repository ppa:ansible/ansible
+apt update
+apt install ansible
+apt install debconf-utils
+
+
+lxd	lxd/bridge-dnsmasq	string	
+lxd	lxd/bridge-domain	string	lxd
+lxd	lxd/bridge-empty-error	note	
+lxd	lxd/bridge-http-proxy	boolean	false
+lxd	lxd/bridge-ipv4-address	string	10.41.63.1
+lxd	lxd/bridge-ipv4	boolean	true
+lxd	lxd/bridge-ipv4-dhcp-first	string	10.41.63.2
+lxd	lxd/bridge-ipv4-dhcp-last	string	10.41.63.254
+lxd	lxd/bridge-ipv4-dhcp-leases	string	252
+lxd	lxd/bridge-ipv4-nat	boolean	true
+lxd	lxd/bridge-ipv4-netmask	string	24
+lxd	lxd/bridge-ipv6-address	string	fd6d:c772:b128:ebfd::1
+lxd	lxd/bridge-ipv6	boolean	true
+lxd	lxd/bridge-ipv6-nat	boolean	true
+lxd	lxd/bridge-ipv6-netmask	string	64
+lxd	lxd/bridge-name	string	lxdbr0
+lxd	lxd/bridge-random-warning	note	
+lxd	lxd/bridge-upgrade-warning	note	
+lxd	lxd/setup-bridge	boolean	true
+lxd	lxd/update-profile	boolean	true
+lxd	lxd/use-existing-bridge	boolean	false
+
+root@busy:~# diff a b
+6,11c6,11
+< lxd	lxd/bridge-http-proxy	boolean	true
+< lxd	lxd/bridge-ipv4-address	string	
+< lxd	lxd/bridge-ipv4	boolean	false
+< lxd	lxd/bridge-ipv4-dhcp-first	string	
+< lxd	lxd/bridge-ipv4-dhcp-last	string	
+< lxd	lxd/bridge-ipv4-dhcp-leases	string	
+---
+> lxd	lxd/bridge-http-proxy	boolean	false
+> lxd	lxd/bridge-ipv4-address	string	10.41.63.1
+> lxd	lxd/bridge-ipv4	boolean	true
+> lxd	lxd/bridge-ipv4-dhcp-first	string	10.41.63.2
+> lxd	lxd/bridge-ipv4-dhcp-last	string	10.41.63.254
+> lxd	lxd/bridge-ipv4-dhcp-leases	string	252
+13,17c13,17
+< lxd	lxd/bridge-ipv4-netmask	string	
+< lxd	lxd/bridge-ipv6-address	string	
+< lxd	lxd/bridge-ipv6	boolean	false
+< lxd	lxd/bridge-ipv6-nat	boolean	false
+< lxd	lxd/bridge-ipv6-netmask	string	
+---
+> lxd	lxd/bridge-ipv4-netmask	string	24
+> lxd	lxd/bridge-ipv6-address	string	fd6d:c772:b128:ebfd::1
+> lxd	lxd/bridge-ipv6	boolean	true
+> lxd	lxd/bridge-ipv6-nat	boolean	true
+> lxd	lxd/bridge-ipv6-netmask	string	64
+
+ansible localhost -m service -a "name=networking state=restarted"
+
+lxc launch ubuntu:16.04 first
+
+root@busy:~# lxc launch ubuntu:16.04 first
+Generating a client certificate. This may take a minute...
+If this is your first time using LXD, you should also run: sudo lxd init
+
+Creating first
+Retrieving image: 100%
+Starting first
+root@busy:~# lxc list
++-------+---------+--------------------+-----------------------------------------------+------------+-----------+
+| NAME  |  STATE  |        IPV4        |                     IPV6                      |    TYPE    | SNAPSHOTS |
++-------+---------+--------------------+-----------------------------------------------+------------+-----------+
+| first | RUNNING | 10.41.63.27 (eth0) | fd6d:c772:b128:ebfd:216:3eff:fea7:69c6 (eth0) | PERSISTENT | 0         |
++-------+---------+--------------------+-----------------------------------------------+------------+-----------+
+root@busy:~# ifconfig
+eno1      Link encap:Ethernet  HWaddr b8:ae:ed:ea:69:41  
+          inet addr:192.168.0.3  Bcast:192.168.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::baae:edff:feea:6941/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:111698 errors:0 dropped:3 overruns:0 frame:0
+          TX packets:57636 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:160405691 (160.4 MB)  TX bytes:4315216 (4.3 MB)
+          Interrupt:16 Memory:df100000-df120000 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:163 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:163 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:12576 (12.5 KB)  TX bytes:12576 (12.5 KB)
+
+lxdbr0    Link encap:Ethernet  HWaddr fe:5c:57:cd:bd:72  
+          inet addr:10.41.63.1  Bcast:0.0.0.0  Mask:255.255.255.0
+          inet6 addr: fd6d:c772:b128:ebfd::1/64 Scope:Global
+          inet6 addr: fe80::d08c:f9ff:fed9:5cd1/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:12 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:24 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1308 (1.3 KB)  TX bytes:3120 (3.1 KB)
+
+vethD7L5U9 Link encap:Ethernet  HWaddr fe:5c:57:cd:bd:72  
+          inet6 addr: fe80::fc5c:57ff:fecd:bd72/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:12 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:21 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1476 (1.4 KB)  TX bytes:2314 (2.3 KB)
+
+ ansible localhost -m debconf -a "name=lxd question='lxd/update-profile' value=true vtype='boolean'"
+
+
+ansible localhost -m apt -a "name=lxd state=present"
+ansible localhost -m service -a "name=networking state=restarted"
+ansible localhost -m debconf -a "name=lxd question='lxd/dupdate-profile' value=false vtype='boolean'"
+ansible localhost -m debconf -a "name=lxd question='lxd/update-profile' value=false vtype='boolean'"
+ansible localhost -m debconf -a "name=lxd question='lxd/update-profile' value=true vtype='boolean'"

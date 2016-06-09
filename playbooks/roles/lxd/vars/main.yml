@@ -1,0 +1,5 @@
+debconf: [
+ { question: 'lxd/a', value: true, vtype: boolean },
+ { question: 'lxd/b', value: false, vtype: boolean },
+ { question: 'lxd/c', value: true, vtype: boolean }
+ ]

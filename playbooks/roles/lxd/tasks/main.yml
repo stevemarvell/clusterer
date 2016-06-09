@@ -1,45 +1,10 @@
+- name: debconf LXD
+  debconf: name='lxd' question='{{ item.question }}' value='{{ item.value }}' vtype='{{ item.vtype }}' 
+  with_items: "{{ debconf }}"
+
 - name: install LXD
-  become: true
-  become_user: root
-  apt: name={{ item }} update_cache=yes
+  apt: name={{ item }} state=present
   with_items:
-    - lxc
-    - python
-    - python-lxc
+    - lxd
 
-- name: Create a started container
-  become: true
-  become_user: root
-  lxc_container:
-    name: test-container-started
-    container_log: true
-    template: ubuntu
-    state: started
-    template_options: --release trusty
 
-- name: Stop the started container
-  become: true
-  become_user: root
-  lxc_container:
-    name: test-container-started
-    state: stopped
-
-- name: Destroy a container
-  become: true
-  become_user: root
-  lxc_container:
-    name: "{{ item }}"
-    state: absent
-  with_items:
-    - test-container-stopped
-    - test-container-started
-    - test-container-frozen
-    - test-container-lvm
-    - test-container-config
-    - test-container-overlayfs
-    - test-container-overlayfs-clone
-    - test-container-overlayfs-clone-snapshot
-    - test-container-overlayfs-clone-snapshot2
-    - test-container-new-archive
-    - test-container-new-archive-clone
-    - test-container-new-archive-destroyed-clone
