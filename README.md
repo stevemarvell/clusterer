@@ -20,6 +20,16 @@ apt install openssh-server openssh-client
 
 ## Client Installation
 
+user@master$ cd .../clusterer
+
+[servers]
+target1
+target2
+
+[servers:vars]
+ansible_connection=ssh
+ansible_user=deploy
+
 user@master$ ssh-keygen -t rsa -f my_ansible_rsa  -q -N ""
 
 user@master$ ssh-copy-id -i my_ansible_rsa.pub deploy@target
@@ -33,12 +43,8 @@ root@master$ sudo apt-add-repository ppa:ansible/ansible
 root@master$ sudo apt-get update
 root@master$ sudo apt-get install ansible
 
-# Allow members of group sudo to execute any command
-%sudo   ALL=(ALL:ALL) NOPASSWD:ALL
-
- sudo lxc-ls --fancy
- 
-sudo virsh -c lxc:/// domxml-from-native lxc-tools /var/lib/lxc/test-container-started/config
+user@master$ ansible-playbook --ask-become-pass playbooks/target.yml
+SUDO password: 
 
 ## Contributing
 
