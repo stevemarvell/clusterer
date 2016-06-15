@@ -5,6 +5,8 @@
 # Packaging
 .cask
 
-# ansible key
+# ansible keys
 ansible_rsa
 ansible_rsa.pub
+my_ansible_rsa
+my_ansible_rsa.pub

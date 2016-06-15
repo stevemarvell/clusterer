@@ -1,14 +1,37 @@
 # clusterer
 An ansible framework to encluster remote machines
 
-## Installation
+## Server Configuration
 
-Ubuntu installation:
-```sh
-root@host:~# apt install ansible
-```
+Vanilla Ubuntu 16.04 Server
 
-ssh-copy-id
+ifdown eno1
+
+auto eno1
+iface eno1 inet static
+	address 192.168.0.3
+	netmask 255.255.255.0
+	gateway 192.168.0.1
+	dns-nameservers 192.168.0.1
+
+ifup eno1
+
+apt install openssh-server openssh-client
+
+## Client Installation
+
+user@master$ ssh-keygen -t rsa -f my_ansible_rsa  -q -N ""
+
+user@master$ ssh-copy-id -i my_ansible_rsa.pub deploy@target
+deploy@target's password: 
+
+user@master$ ssh -i my_ansible_rsa deploy@target
+deploy@target$ logout
+
+root@master$ sudo apt-get install software-properties-common
+root@master$ sudo apt-add-repository ppa:ansible/ansible
+root@master$ sudo apt-get update
+root@master$ sudo apt-get install ansible
 
 # Allow members of group sudo to execute any command
 %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
