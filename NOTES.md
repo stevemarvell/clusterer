@@ -286,6 +286,8 @@ ansible localhost -m debconf -a "name=lxd question='lxd/update-profile' value=tr
 
 echo "nameserver 10.177.161.1" | resolvconf -a lxdbr0.net
 
+(does not survive reboot)
+
 --- ha proxy
 
 do all this remotely
@@ -298,7 +300,6 @@ Proto Recv-Q Send-Q Local Address           Foreign Address         State
 tcp        0      0 *:ssh                   *:*                     LISTEN     
 tcp6       0      0 [::]:ssh                [::]:*                  LISTEN     
 deploy@target:~$ 
-
 
 global
 	log /dev/log	local0
@@ -351,7 +352,7 @@ backend here
     option httpchk HEAD /check.txt HTTP/1.0
     option httpclose
     option forwardfor
-    server here here:80 cookie Server1
+    server here here.local:80 cookie Server1
 
 backend here_1
     balance roundrobin
@@ -359,4 +360,5 @@ backend here_1
     option httpchk HEAD /check.txt HTTP/1.0
     option httpclose
     option forwardfor
-    server lxd1 lxd1:80 cookie Container1
+    server lxd1 redmine-ubuntu:80 cookie Container1
+
