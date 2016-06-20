@@ -45,7 +45,7 @@ root@master$ sudo apt-get install ansible
 
 update "servers" in inventory
 
-user@master$ ansible-playbook --ask-become-pass playbooks/ssh.yml
+user@master$ ansible-playbook --ask-become-pass playbooks/init.yml
 SUDO password: 
 
 

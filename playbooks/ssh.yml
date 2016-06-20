@@ -1,9 +1,0 @@
----
-- name: "Initialise target server"
-  hosts: servers
-  become: true
-  become_user: root
-  become_method: sudo
-  tasks:
-    - name: "sudo group needs no password"
-      lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
