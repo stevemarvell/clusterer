@@ -1,5 +1,22 @@
 debconf: [
- { question: 'lxd/a', value: true, vtype: boolean },
- { question: 'lxd/b', value: false, vtype: boolean },
- { question: 'lxd/c', value: true, vtype: boolean }
- ]
+ { question: 'lxd/bridge-upgrade-warning', vtype: note, value: '' },
+ { question: 'lxd/setup-bridge', vtype: boolean, value: true },
+ { question: 'lxd/use-existing-bridge', vtype: boolean, value: false },
+ { question: 'lxd/bridge-dnsmasq', vtype: string, value: '' },
+ { question: 'lxd/bridge-domain', vtype: string, value: 'lxd' },
+ { question: 'lxd/bridge-empty-error', vtype: note, value: '' },
+ { question: 'lxd/bridge-http-proxy', vtype: boolean, value: false },
+ { question: 'lxd/bridge-ipv4-address', vtype: string, value: '10.0.10.1' },
+ { question: 'lxd/bridge-ipv4', vtype: boolean, value: true },
+ { question: 'lxd/bridge-ipv4-dhcp-first', vtype: string, value: '10.0.10.2' },
+ { question: 'lxd/bridge-ipv4-dhcp-last', vtype: string, value: '10.0.10.254' },
+ { question: 'lxd/bridge-ipv4-dhcp-leases', vtype: string, value: '252' },
+ { question: 'lxd/bridge-ipv4-nat', vtype: boolean, value: true },
+ { question: 'lxd/bridge-ipv4-netmask', vtype: string, value: '24' },
+ { question: 'lxd/bridge-ipv6-address', vtype: string, value: 'fd9e:b1a9:8671:ef93::1' },
+ { question: 'lxd/bridge-ipv6', vtype: boolean, value: true },
+ { question: 'lxd/bridge-ipv6-nat', vtype: boolean, value: true },
+ { question: 'lxd/bridge-ipv6-netmask', vtype: string, value: '64' },
+ { question: 'lxd/bridge-name', vtype: string, value: 'lxdbr0' },
+ { question: 'lxd/bridge-random-warning', vtype: note, value: '' }
+]

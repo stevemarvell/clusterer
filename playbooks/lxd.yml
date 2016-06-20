@@ -1,5 +1,7 @@
 ---
 - name: lxd
-  hosts: nodes
+  hosts: hosters
+  become: true
+  become_user: root
   roles:
     - lxd
