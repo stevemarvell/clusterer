@@ -362,3 +362,5 @@ backend here_1
     option forwardfor
     server lxd1 redmine-ubuntu:80 cookie Container1
 
+lxc exec redmine-ubuntu -- sh -c "exec >/dev/tty 2>/dev/tty </dev/tty && /usr/bin/screen -s /bin/bash"
+
