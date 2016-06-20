@@ -1,10 +1,14 @@
 - name: debconf LXD
   debconf: name='lxd' question='{{ item.question }}' value='{{ item.value }}' vtype='{{ item.vtype }}' 
   with_items: "{{ debconf }}"
-
+  tags:
+    - config
+  
 - name: install LXD
   apt: name={{ item }} state=present
   with_items:
     - lxd
-
+  tags:
+    - package
+    
 

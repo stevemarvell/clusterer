@@ -364,3 +364,39 @@ backend here_1
 
 lxc exec redmine-ubuntu -- sh -c "exec >/dev/tty 2>/dev/tty </dev/tty && /usr/bin/screen -s /bin/bash"
 
+---
+# tasks file for lxd (Ubuntu specific)
+
+- name: Add LXD PPA
+  become: yes
+  apt_repository:
+    repo: 'ppa:ubuntu-lxc/lxd-stable'
+    state: present
+  tags:
+    - lxd
+
+- name: Install LXD packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - "{{ lxd_packages }}"
+  tags:
+    - lxd
+system@biscuit:~/clusterer$ ansible-playbook -i inventory playbooks/lxd.yml --tags config --list-tasks
+
+playbook: playbooks/lxd.yml
+
+  play #1 (hosters): lxd	TAGS: [lxd]
+    tasks:
+      lxd : debconf LXD	TAGS: [config, lxd]
+system@biscuit:~/clusterer$ ansible-playbook -i inventory playbooks/lxd.yml --tags package --list-tasks
+
+playbook: playbooks/lxd.yml
+
+  play #1 (hosters): lxd	TAGS: [lxd]
+    tasks:
+      lxd : install LXD	TAGS: [lxd, package]
+

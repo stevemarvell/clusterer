@@ -7,7 +7,14 @@
   tasks:
     - name: "sudo group needs no password"
       lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
+      tags:
+        - system
     - name: "install python-apt"
       become: true
       become_user: root
       shell: "apt install python-apt -y"
+      tags:
+        - package
+  tags:
+    - init
+    

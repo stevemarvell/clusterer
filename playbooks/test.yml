@@ -1,5 +1,0 @@
----
-- name: test
-  hosts: nodes
-  roles:
-    - test

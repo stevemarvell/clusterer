@@ -5,3 +5,5 @@
   become_user: root
   roles:
     - lxd
+  tags:
+    - lxd
