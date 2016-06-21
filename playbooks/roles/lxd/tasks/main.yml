@@ -1,14 +1,16 @@
 - name: debconf LXD
   debconf: name='lxd' question='{{ item.question }}' value='{{ item.value }}' vtype='{{ item.vtype }}' 
   with_items: "{{ debconf }}"
-  tags:
-    - config
-  
+  tags: [ configuration, install ]
+      
 - name: install LXD
   apt: name={{ item }} state=present
   with_items:
     - lxd
-  tags:
-    - packages
-    
+  tags: [ packages, install ]
 
+- name: update config 
+  lineinfile: dest=/etc/default/lxd-bridge regexp=^LXD_BRIDGE= line=LXD_BRIDGE="lxdbr0"
+  notify:
+    - restart lxd
+  tags: [ postinstall, install ]

@@ -1,0 +1,8 @@
+---
+
+- name: restart lxd
+  service: name=lxd-bridge state=stopped
+  notify: restart lxdb
+
+- name: restart lxdb
+  service: name=lxd state=restarted

@@ -1,0 +1,9 @@
+---
+- name: dns
+  hosts: nameservers
+  become: true
+  become_user: root
+  roles:
+    - dns
+  tags:
+    - dns

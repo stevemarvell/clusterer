@@ -13,6 +13,9 @@ ansible_user=deploy
 [debugs:children]
 servers
 
+[nameservers:children]
+local
+
 [hosters:children]
 servers
 
