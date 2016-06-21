@@ -9,6 +9,6 @@
   with_items:
     - lxd
   tags:
-    - package
+    - packages
     
 

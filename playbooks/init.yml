@@ -14,7 +14,7 @@
       become_user: root
       shell: "apt install python-apt -y"
       tags:
-        - package
+        - packages
   tags:
     - init
     
