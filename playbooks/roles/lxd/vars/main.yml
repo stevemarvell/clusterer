@@ -1,7 +1,21 @@
+xdebconf: [
+ { question: 'lxd/setup-bridge', vtype: boolean, value: true },
+
+ { question: 'lxd/bridge-ipv4', vtype: boolean, value: true },
+
+ { question: 'lxd/bridge-ipv4-address', vtype: string, value: '10.0.12.1' },
+ { question: 'lxd/bridge-ipv4-netmask', vtype: string, value: '24' },
+
+ { question: 'lxd/bridge-name', vtype: string, value: 'lxdbr0' },
+
+ { question: 'lxd/update-profile', vtype: boolean, value: true },
+
+]
+
 debconf: [
  { question: 'lxd/update-profile', vtype: boolean, value: true },
 
- { question: 'lxd/bridge-name', vtype: string, value: 'lxdbridge0' },
+ { question: 'lxd/bridge-name', vtype: string, value: 'lxdbr0' },
  
  { question: 'lxd/bridge-dnsmasq', vtype: string, value: '' },
  { question: 'lxd/bridge-domain', vtype: string, value: 'lxd' },
@@ -13,12 +27,12 @@ debconf: [
 
  { question: 'lxd/bridge-ipv4', vtype: boolean, value: true },
  
- { question: 'lxd/bridge-ipv4-address', vtype: string, value: '10.0.11.1' },
+ { question: 'lxd/bridge-ipv4-address', vtype: string, value: '10.0.10.1' },
  { question: 'lxd/bridge-ipv4-netmask', vtype: string, value: '24' },
  { question: 'lxd/bridge-ipv4-nat', vtype: boolean, value: true },
 
- { question: 'lxd/bridge-ipv4-dhcp-first', vtype: string, value: '10.0.11.2' },
- { question: 'lxd/bridge-ipv4-dhcp-last', vtype: string, value: '10.0.11.254' },
+ { question: 'lxd/bridge-ipv4-dhcp-first', vtype: string, value: '10.0.10.2' },
+ { question: 'lxd/bridge-ipv4-dhcp-last', vtype: string, value: '10.0.10.254' },
  { question: 'lxd/bridge-ipv4-dhcp-leases', vtype: string, value: '252' },
  
  { question: 'lxd/bridge-ipv6', vtype: boolean, value: true },

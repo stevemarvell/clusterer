@@ -1,4 +1,6 @@
 ---
+- name: reconfigure lxd
+  command: dpkg-reconfigure --frontend noninteractive lxd
 
 - name: restart lxd
   service: name=lxd-bridge state=stopped
