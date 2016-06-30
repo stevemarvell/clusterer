@@ -8,7 +8,7 @@ target1
 
 [servers:vars]
 ansible_connection=ssh
-ansible_user=deploy
+ansible_user=system
 
 [debugs:children]
 servers
