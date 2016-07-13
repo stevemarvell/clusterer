@@ -447,3 +447,34 @@ ssh-keyscan -H metal1,192.168.0.21 >> ~/.ssh/known_hosts
 ssh-keyscan -H metal2,192.168.0.22 >> ~/.ssh/known_hosts
 
 scp -o StrictHostKeyChecking=no  -r ~/.ssh metal2:
+
+apt install pacemaker pcs psmisc
+
+if firewalld --- http://clusterlabs.org/doc/en-US/Pacemaker/1.1-pcs/html/Clusters_from_Scratch/_configure_the_cluster_software.html
+
+root@metal1:~# systemctl start pcsd.service
+root@metal1:~# systemctl enable pcsd.service
+
+or ...
+
+apt install pacemaker corosync fence-agents
+
+/etc/corosync/corosync.conf
+
+nodelist { 
+	node { 
+		ring0_addr: metal1 
+		nodeid: 101 
+	}
+	node { 
+		ring0_addr: metal2 
+		nodeid: 102 
+	}
+}
+
+crm configure property stonith-enabled=false
+crm configure property no-quorum-policy=ignore
+crm configure property migration-threshold=1
+
+crm configure primitive my_first_svc ocf:pacemaker:Dummy op monitor interval=120s
+
