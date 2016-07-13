@@ -400,3 +400,50 @@ playbook: playbooks/lxd.yml
     tasks:
       lxd : install LXD	TAGS: [lxd, package]
 
+
+
+pacemaker thing
+===============
+
+apt install ntp
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eno1
+iface eno1 inet static
+	address 192.168.0.21
+	netmask 255.255.255.0
+	gateway 192.168.0.1
+	dns-nameservers 192.168.0.1
+
+auto enp0s20f0u3
+iface enp0s20f0u3 inet static
+        address 10.1.1.21
+        netmask 255.255.255.0
+
+
+127.0.0.1       localhost
+#127.0.1.1      metal1
+
+192.168.0.21    metal1
+192.168.0.22    metal2
+
+
+apt install pacemaker pacemaker-resource-agents pcs
+
+
+ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ""
+cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+
+ssh-keyscan -H metal1,192.168.0.21 >> ~/.ssh/known_hosts
+ssh-keyscan -H metal2,192.168.0.22 >> ~/.ssh/known_hosts
+
+scp -o StrictHostKeyChecking=no  -r ~/.ssh metal2:
