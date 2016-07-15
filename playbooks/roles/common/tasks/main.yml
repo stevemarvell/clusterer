@@ -1,13 +1,7 @@
-- name: ntp package
-  apt: name=ntp state=present
-  tags: [ ntp, packages, install ]
+# - include: ntp.yml
+  
+# include: memcache.yml
+# https://github.com/geerlingguy/ansible-role-memcached
+# http://docs.openstack.org/ha-guide/environment-memcached.html 
 
-- name: ntp config
-  template: src=ntp.conf.j2 dest=/etc/ntp.conf
-  notify:
-    - restart ntpd
-  tags: [ ntp, configuration, install ]
-
-- name: ntpd is running and enabled
-  service: name=ntp state=started enabled=yes
-  tags: [ ntp, install ]
+- include: galera.yml

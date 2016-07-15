@@ -1,0 +1,12 @@
+- name: galera apt key
+  apt_key: keyserver=keyserver.ubuntu.com id=0xF1656F24C74CD1D8
+
+- name: galera deb
+  apt_repository: repo='deb http://lon1.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu xenial main' state=present
+  
+- name: galera packages
+  apt: name={{ item }} state=present
+  with_items:
+    - galera
+    - mariadb-galera-server
+  tags: [ galera, packages, install ]

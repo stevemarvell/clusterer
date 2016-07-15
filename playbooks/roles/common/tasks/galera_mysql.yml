@@ -1,0 +1,17 @@
+- name: galera apt key
+  apt_key: keyserver=keyserver.ubuntu.com id=BC19DDBA
+
+- name: galera deb
+  apt_repository: repo='deb http://releases.galeracluster.com/ubuntu xenial main' state=present
+  
+- name: galera / MariaDB packages
+  apt: name={{ item }} state=present
+  with_items:
+    - galera-3
+    - galera-arbitrator-3
+    - mysql-wsrep-5.6
+  tags: [ galera, packages, install ]
+
+- name: galera is running and enabled
+  service: name=galera state=started enabled=yes
+  tags: [ galera, install ]
