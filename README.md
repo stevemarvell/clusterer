@@ -30,7 +30,9 @@ target2
 ansible_connection=ssh
 ansible_user=system
 
-user@master$ ssh-keygen -t rsa -f system_rsa  -q -N ""
+copy your own or gen
+
+user@master$ ssh-keygen -t rsa -f ansible_rsa  -q -N ""
 
 root@master$ apt install software-properties-common
 root@master$ apt-add-repository ppa:ansible/ansible
@@ -41,6 +43,7 @@ update "servers" in inventory
 
 user@master$ ansible-playbook --user system --ask-pass --ask-become-pass playbooks/init.yml
 
+user@master$ ansible-playbook playbooks/site.yml
 
 ## Contributing
 
