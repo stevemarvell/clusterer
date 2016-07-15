@@ -11,7 +11,7 @@
     - name: "install python-apt"
       raw: "apt install python python-apt -y"
       tags:
-        - packages
+        - package
 
   tasks:
     

@@ -1,6 +1,6 @@
 - name: ntp package
   apt: name=ntp state=present
-  tags: [ ntp, packages, install ]
+  tags: [ ntp, package, install ]
 
 - name: ntp config
   template: src=ntp.conf.j2 dest=/etc/ntp.conf

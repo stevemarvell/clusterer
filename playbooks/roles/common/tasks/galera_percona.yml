@@ -4,8 +4,8 @@
 - name: galera deb
   apt_repository: repo='deb http://repo.percona.com/apt xenial main' state=present
   
-- name: galera packages
+- name: galera package
   apt: name={{ item }} state=present
   with_items:
     - percona-xtradb-cluster
-  tags: [ galera, packages, install ]
+  tags: [ galera, package, install ]

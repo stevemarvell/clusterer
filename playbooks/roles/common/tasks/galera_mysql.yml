@@ -4,13 +4,13 @@
 - name: galera deb
   apt_repository: repo='deb http://releases.galeracluster.com/ubuntu xenial main' state=present
   
-- name: galera / MariaDB packages
+- name: galera / MariaDB package
   apt: name={{ item }} state=present
   with_items:
     - galera-3
     - galera-arbitrator-3
     - mysql-wsrep-5.6
-  tags: [ galera, packages, install ]
+  tags: [ galera, package, install ]
 
 - name: galera is running and enabled
   service: name=galera state=started enabled=yes

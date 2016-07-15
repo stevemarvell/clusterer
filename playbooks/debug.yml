@@ -5,10 +5,20 @@
   become_user: root
   become_method: sudo
   tasks:
-    - name: "install items"
-      apt: name={{ item }} state=present
-      with_items:
-        - debconf-utils
+    - name: "messenger 1"
+      debug: msg="System {{ inventory_hostname }} has interface {{ management_iface }}"
+    - name: "messenger 2"
+      debug: msg="System {{ inventory_hostname }} has interface {{ ansible_ssh_host }}"
+    - name: "messenger 3"
+      debug: msg="{{ hostvars[item]['ansible_ssh_host'] }}"
+      with_items: "{{ play_hosts }}"
+
+#    - name: ipt test
+#      iptables: chain=INPUT in_interface={{ management_iface }} protocol=tcp match=tcp destination_port=3306 source=1.1.1.1 jump=ACCEPT comment="a test"
+
+
+
+
   tags:
     - debug
     

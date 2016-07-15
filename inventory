@@ -6,8 +6,15 @@ virtual03  ansible_ssh_host=10.1.2.23
 [local]
 localhost
 
-[servers]
+[virtuals]
 virtual[01:03]
+
+[virtuals:vars]
+public_iface=enp0s3
+management_iface=enp0s9
+
+[servers:children]
+virtuals
 
 [servers:vars]
 ansible_connection=ssh

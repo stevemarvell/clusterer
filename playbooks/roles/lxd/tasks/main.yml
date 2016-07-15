@@ -11,4 +11,4 @@
   apt: name={{ item }} state=present
   with_items:
     - lxd
-  tags: [ packages, install ]
+  tags: [ package, install ]

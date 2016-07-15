@@ -3,6 +3,6 @@
   with_items:
     - bind9
   tags:
-    - packages
+    - package
     
 

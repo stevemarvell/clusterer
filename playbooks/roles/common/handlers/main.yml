@@ -1,3 +1,6 @@
 ---
 - name: restart ntpd
   service: name=ntpd state=restarted
+
+- name: save iptables
+  service: name="netfilter-persistent" args="save"

@@ -1,0 +1,27 @@
+---
+- name: install iptables-persistent
+  apt: pkg=iptables-persistent state=present
+  tags: [ iptables, package ]
+
+- name: iptables MariaDB port 3306
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=tcp match=tcp destination_port=3306 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="MariaDB Port 3306"
+  with_items: "{{ play_hosts }}"
+
+- name: iptables MariaDB port 4567
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=tcp match=tcp destination_port=4567 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="MariaDB Port 4567"
+  with_items: "{{ play_hosts }}"
+
+- name: iptables MariaDB port 4568
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=tcp match=tcp destination_port=4568 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="MariaDB Port 4568"
+  with_items: "{{ play_hosts }}"
+
+- name: iptables MariaDB port 4444
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=tcp match=tcp destination_port=4444 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="MariaDB Port 4444"
+  with_items: "{{ play_hosts }}"
+
+- name: iptables MariaDB port 4567 for multicast
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=udp match=udp destination_port=4567 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="MariaDB Port 4567 for multicast replication"
+  with_items: "{{ play_hosts }}"
+
+- name: save iptables
+  shell: "service netfilter-persistent save"

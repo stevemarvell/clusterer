@@ -4,9 +4,9 @@
 - name: galera deb
   apt_repository: repo='deb http://lon1.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu xenial main' state=present
   
-- name: galera packages
+- name: galera package
   apt: name={{ item }} state=present
   with_items:
     - galera
     - mariadb-galera-server
-  tags: [ galera, packages, install ]
+  tags: [ galera, package, install ]

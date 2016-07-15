@@ -4,4 +4,11 @@
 # https://github.com/geerlingguy/ansible-role-memcached
 # http://docs.openstack.org/ha-guide/environment-memcached.html 
 
-- include: galera.yml
+# - include: galera.yml
+
+# - include: iptables.yml
+
+# include: apparmor.yml
+
+# include: mariadb.yml
+
