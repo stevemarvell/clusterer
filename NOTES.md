@@ -478,3 +478,17 @@ crm configure property migration-threshold=1
 
 crm configure primitive my_first_svc ocf:pacemaker:Dummy op monitor interval=120s
 
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+
+auto enp0s8 
+iface enp0s8 inet static
+	address 10.1.1.10
+	netmask 255.255.255.0	
+
+auto enp0s9 
+iface enp0s9 inet static
+	address 10.1.2.10
+	netmask 255.255.255.0	
+

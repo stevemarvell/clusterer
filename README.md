@@ -28,25 +28,18 @@ target2
 
 [servers:vars]
 ansible_connection=ssh
-ansible_user=deploy
+ansible_user=system
 
-user@master$ ssh-keygen -t rsa -f my_ansible_rsa  -q -N ""
+user@master$ ssh-keygen -t rsa -f system_rsa  -q -N ""
 
-user@master$ ssh-copy-id -i my_ansible_rsa.pub deploy@target
-deploy@target's password: 
-
-user@master$ ssh -i my_ansible_rsa deploy@target
-deploy@target$ logout
-
-root@master$ sudo apt-get install software-properties-common
-root@master$ sudo apt-add-repository ppa:ansible/ansible
-root@master$ sudo apt-get update
-root@master$ sudo apt-get install ansible
+root@master$ apt install software-properties-common
+root@master$ apt-add-repository ppa:ansible/ansible
+root@master$ apt update && apt upgrade
+root@master$ apt install ansible
 
 update "servers" in inventory
 
-user@master$ ansible-playbook --ask-become-pass playbooks/init.yml
-SUDO password: 
+user@master$ ansible-playbook --user system --ask-pass --ask-become-pass playbooks/init.yml
 
 
 ## Contributing
