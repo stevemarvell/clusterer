@@ -1,10 +1,6 @@
-localhost  ansible_connection=local
 virtual01  ansible_ssh_host=10.1.2.21
 virtual02  ansible_ssh_host=10.1.2.22
 virtual03  ansible_ssh_host=10.1.2.23
-
-[local]
-localhost
 
 [virtuals]
 virtual[01:03]
@@ -22,10 +18,3 @@ ansible_user=system
 
 [debugs:children]
 servers
-
-[nameservers:children]
-local
-
-[hosters:children]
-servers
-

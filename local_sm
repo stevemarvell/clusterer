@@ -1,0 +1,18 @@
+virtual00  ansible_ssh_host=10.1.2.10
+
+[virtuals]
+virtual00
+
+[virtuals:vars]
+public_iface=enp0s3
+management_iface=enp0s9
+
+[servers:children]
+virtuals
+
+[servers:vars]
+ansible_connection=ssh
+ansible_user=system
+
+[debugs:children]
+servers

@@ -41,9 +41,9 @@ root@master$ apt install ansible
 
 update "servers" in inventory
 
-user@master$ ansible-playbook --user system --ask-pass --ask-become-pass playbooks/init.yml
+user@master$ ansible-playbook -i <inventory> --user system --ask-pass --ask-become-pass playbooks/init.yml
 
-user@master$ ansible-playbook playbooks/site.yml
+user@master$ ansible-playbook -i <inventory> playbooks/site.yml
 
 ## Contributing
 

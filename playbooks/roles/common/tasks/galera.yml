@@ -1,8 +1,9 @@
+---
 - name: galera apt key
   apt_key: keyserver=keyserver.ubuntu.com id=0xF1656F24C74CD1D8
 
 - name: galera deb
-  apt_repository: repo='deb http://lon1.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu xenial main' state=present
+  apt_repository: repo='deb  http://mirrors.coreix.net/mariadb/repo/10.0/ubuntu xenial main' state=present
   
 - name: galera package
   apt: name={{ item }} state=present
