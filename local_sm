@@ -1,18 +1,16 @@
-virtual00  ansible_ssh_host=10.1.2.10
+server00  ansible_ssh_host=10.1.2.10
 
-[virtuals]
-virtual00
-
-[virtuals:vars]
-public_iface=enp0s3
-management_iface=enp0s9
-
-[servers:children]
-virtuals
+[servers]
+server00
 
 [servers:vars]
+public_iface=enp0s3
+management_iface=enp0s9
 ansible_connection=ssh
 ansible_user=system
+
+[galera_cluster]
+server00
 
 [debugs:children]
 servers

@@ -1,3 +1,7 @@
 ---
-- include: servers.yml
-#- include: dbservers.yml
+- name: "all servers"  
+  include: servers.yml
+  
+- name: "openstack servers"
+  include: openstack.yml
+

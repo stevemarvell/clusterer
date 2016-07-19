@@ -1,10 +1,4 @@
 ---
 - name: restart ntpd
   service: name=ntp state=restarted
-
-- name: save iptables
-  service: name="netfilter-persistent" args="save"
-
-- name: restart mysql
-  service: name=mysql state=restarted
-
+  tags: ntp

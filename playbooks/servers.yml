@@ -1,9 +1,5 @@
 ---
 - name: "tasks for all servers"
   hosts: servers
-  become: true
-  become_user: root
-  become_method: sudo
   roles:
     - common
-#    - webtier

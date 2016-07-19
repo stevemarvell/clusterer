@@ -1,17 +1,5 @@
-# - include: ntp.yml
+- include: ntp.yml
 
-# - include: openstack.yml
-  
 # include: memcache.yml
 # https://github.com/geerlingguy/ansible-role-memcached
 # http://docs.openstack.org/ha-guide/environment-memcached.html 
-
-# - include: galera.yml
-
-# - include: iptables.yml
-
-# include: apparmor.yml
-
-# https://github.com/adfinis-sygroup/mariadb-ansible-galera-cluster
-- include: mariadb.yml
-
