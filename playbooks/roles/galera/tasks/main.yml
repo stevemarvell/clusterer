@@ -1,0 +1,12 @@
+---
+# http://docs.openstack.org/ha-guide/shared-database.html
+
+- include: galera.yml
+- include: iptables.yml
+
+# include: selinux.yml
+# include: apparmor.yml
+
+# https://github.com/adfinis-sygroup/mariadb-ansible-galera-cluster
+- include: mariadb.yml
+

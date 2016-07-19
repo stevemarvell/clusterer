@@ -1,0 +1,12 @@
+---
+- name: "tasks for openstack servers"
+  hosts: servers
+  roles:
+    - openstack
+  tags: openstack
+
+- name: "tasks for galera cluster"
+  hosts: galera_cluster
+  roles:
+    - galera
+  tags: [ openstack, galera ]
