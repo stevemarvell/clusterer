@@ -1,19 +1,9 @@
-[mysqld]
-datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
-user=mysql
-binlog_format=ROW
-bind-address=10.0.0.12
+---
+- name: mariadb config
+  template: src=mysql_openstack.cnf.j2 dest=/etc/mysql/conf.d/openstack.cnf
+  notify:
+    - restart mysql
+  tags: [ mysql, mariadb, galera, configuration, install ]
 
-# InnoDB Configuration
-default_storage_engine=innodb
-innodb_autoinc_lock_mode=2
-innodb_flush_log_at_trx_commit=0
-innodb_buffer_pool_size=122M
+# if kludge in template due to lack of "do" statement
 
-# Galera Cluster Configuration
-wsrep_provider=/usr/lib/libgalera_smm.so
-wsrep_provider_options="pc.recovery=TRUE;gcache.size=300M"
-wsrep_cluster_name="my_example_cluster"
-wsrep_cluster_address="gcomm://GALERA1-IP,GALERA2-IP,GALERA3-IP"
-wsrep_sst_method=rsync

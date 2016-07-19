@@ -1,0 +1,6 @@
+---
+- name: openstack packages
+  apt: name={{ item }} state=present
+  with_items:
+    - python-openstackclient
+  tags: [ openstack, package, install ]
