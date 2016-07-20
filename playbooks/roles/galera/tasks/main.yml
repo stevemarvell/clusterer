@@ -10,3 +10,5 @@
 # https://github.com/adfinis-sygroup/mariadb-ansible-galera-cluster
 - include: mariadb.yml
 
+
+# need to get all the security lark done 

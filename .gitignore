@@ -9,5 +9,9 @@
 ansible_rsa
 ansible_rsa.pub
 
-#retries
+# retries
 playbooks/*.retry
+
+# ansible cache
+
+ansible/cache

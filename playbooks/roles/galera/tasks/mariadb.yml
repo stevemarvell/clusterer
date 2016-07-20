@@ -1,8 +1,6 @@
 ---
 - name: mariadb config
   template: src=mysql_openstack.cnf.j2 dest=/etc/mysql/conf.d/openstack.cnf
-  notify:
-    - restart mysql
   tags: [ mysql, mariadb, galera, configuration, install ]
 
 # if kludge in template due to lack of "do" statement

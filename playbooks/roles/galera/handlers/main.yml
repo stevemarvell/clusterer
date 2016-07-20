@@ -1,7 +1,4 @@
 ---
 - name: save iptables
   service: name="netfilter-persistent" args="save"
-
-- name: restart mysql
-  service: name=mysql state=restarted
-
+  

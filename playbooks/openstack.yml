@@ -10,3 +10,10 @@
   roles:
     - galera
   tags: [ openstack, galera ]
+
+- name: "start galera cluster"
+  hosts: galera_cluster
+  serial: 1
+  roles:
+    - galera_bootstrap
+  tags: [ openstack, galera ]

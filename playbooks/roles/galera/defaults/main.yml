@@ -1,0 +1,4 @@
+---
+galera_server_id: 1248
+galera_wsrep_cluster_name: ansible_galera_cluster
+#bootstrapped: no
