@@ -1,4 +1,6 @@
 ---
-- name: Bootstrap first MariaDB Galera cluster node
-  shell: service mysql stop && service mysql bootstrap
-
+- name: Set HA mode for queues
+  rabbitmq_policy: name="ha-all" pattern="^(?!amq\.).*"
+  args:
+    tags:
+      "ha-mode": "all"
