@@ -14,5 +14,8 @@ ansible_user=system
 [galera_cluster]
 server[01:03]
 
+[rabbitmq_cluster]
+server[01:03]
+
 [debugs:children]
 servers

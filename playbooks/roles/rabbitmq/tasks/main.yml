@@ -1,0 +1,17 @@
+---
+- name: install rabbitmq-server
+  apt: name=rabbitmq-server update_cache=yes
+  tags: [ package, install ]
+  
+- name: copy cookie
+  template:
+    src=erlang.cookie.j2
+    dest=/var/lib/rabbitmq/.erlang.cookie
+    owner=rabbitmq
+    group=rabbitmq
+    mode=0400
+    backup=yes
+  notify: restart rabbitmq-server
+  tags: [ configuration, install ]
+
+  

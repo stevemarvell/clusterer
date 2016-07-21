@@ -1,19 +1,25 @@
 ---
-- name: "tasks for openstack servers"
-  hosts: servers
-  roles:
-    - openstack
-  tags: openstack
+# - name: "Tasks for Openstack servers"
+#   hosts: servers
+#   roles:
+#     - openstack
+#   tags: openstack
 
-- name: "tasks for galera cluster"
-  hosts: galera_cluster
-  roles:
-    - galera
-  tags: [ openstack, galera ]
+# - name: "Tasks for Galera cluster"
+#   hosts: galera_cluster
+#   roles:
+#     - galera
+#   tags: [ openstack, galera ]
 
-- name: "start galera cluster"
-  hosts: galera_cluster
-  serial: 1
+# - name: "Start Galera cluster"
+#   hosts: galera_cluster
+#   serial: 1
+#   roles:
+#     - galera_bootstrap
+#   tags: [ openstack, galera ]
+
+- name: "Tasks for RabbitMQ"
+  hosts: rabbitmq_cluster
   roles:
-    - galera_bootstrap
-  tags: [ openstack, galera ]
+    - rabbitmq
+  tags: [ openstack, rabbitmq ]
