@@ -1,0 +1,8 @@
+---
+- name: rabbitmq primary server actions
+  include: primary.yml
+  when: inventory_hostname == groups['rabbitmq_cluster'][0]
+
+- name: rabbitmq secondary server actions
+  include: secondary.yml
+  when: inventory_hostname != groups['rabbitmq_cluster'][0]

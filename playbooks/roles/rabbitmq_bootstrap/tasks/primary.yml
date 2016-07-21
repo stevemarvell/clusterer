@@ -1,0 +1,4 @@
+---
+- name: Bootstrap first MariaDB Galera cluster node
+  shell: service mysql stop && service mysql bootstrap
+

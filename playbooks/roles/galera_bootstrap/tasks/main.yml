@@ -1,8 +1,8 @@
 ---
-- name: Bootstrap first MariaDB Galera cluster node
-  shell: service mysql stop && service mysql bootstrap
+- name: galera primary server actions
+  include: primary.yml
   when: inventory_hostname == groups['galera_cluster'][0]
 
-- name: Restart the other MariaDB Galera cluster nodes
-  service: name=mysql state=restarted
+- name: galera secondary server actions
+  include: secondary.yml
   when: inventory_hostname != groups['galera_cluster'][0]

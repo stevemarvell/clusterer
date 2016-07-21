@@ -1,0 +1,10 @@
+---
+- name: stop app
+  command: rabbitmqctl stop_app
+ 
+- name: join cluster
+  command: rabbitmqctl join_cluster rabbit@10.1.2.21
+
+- name: start app
+  command: rabbitmqctl start_app
+

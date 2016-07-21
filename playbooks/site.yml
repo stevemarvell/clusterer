@@ -4,4 +4,5 @@
   
 - name: "openstack servers"
   include: openstack.yml
+  tags: openstack
 

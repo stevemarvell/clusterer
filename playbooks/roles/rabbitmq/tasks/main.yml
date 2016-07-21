@@ -3,7 +3,7 @@
   apt: name=rabbitmq-server update_cache=yes
   tags: [ package, install ]
   
-- name: copy cookie
+- name: copy erlang cookie
   template:
     src=erlang.cookie.j2
     dest=/var/lib/rabbitmq/.erlang.cookie
@@ -13,5 +13,3 @@
     backup=yes
   notify: restart rabbitmq-server
   tags: [ configuration, install ]
-
-  
