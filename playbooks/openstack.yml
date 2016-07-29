@@ -11,12 +11,12 @@
     - galera
   tags: [ galera, install ]
 
-- name: "Start Galera cluster"
-  hosts: galera_cluster
-  serial: 1
-  roles:
-    - galera_bootstrap
-  tags: [ galera, bootstrap ]
+# - name: "Start Galera cluster"
+#   hosts: galera_cluster
+#   serial: 1
+#   roles:
+#     - galera_bootstrap
+#   tags: [ galera, bootstrap ]
 
 - name: "Tasks for RabbitMQ"
   hosts: rabbitmq_cluster

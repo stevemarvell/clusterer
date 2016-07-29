@@ -9,6 +9,7 @@
   pre_tasks:
 
     - name: "install python-apt"
+      become_user: root
       raw: "apt install python python-apt -y"
       tags:
         - package

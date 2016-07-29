@@ -1,7 +1,7 @@
 ---
-- name: galera primary server actions
-  include: primary.yml
-  when: inventory_hostname == groups['galera_cluster'][0]
+# - name: galera primary server actions
+#   include: primary.yml
+#   when: inventory_hostname == groups['galera_cluster'][0]
 
 - name: galera secondary server actions
   include: secondary.yml
