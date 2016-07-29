@@ -1,6 +1,8 @@
 - include: hosts.yml
+  tags: resolution
   
 - include: ntp.yml
+  tags: ntp
 
 # include: memcache.yml
 # https://github.com/geerlingguy/ansible-role-memcached

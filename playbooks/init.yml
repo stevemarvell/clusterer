@@ -7,7 +7,7 @@
   gather_facts: no
   
   pre_tasks:
-  
+
     - name: "install python-apt"
       raw: "apt install python python-apt -y"
       tags:
@@ -20,12 +20,12 @@
       with_file:
         - ../ansible_rsa.pub
       tags:
-        - system
+        - security
         
     - name: "sudo group needs no password"
       lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL) NOPASSWD: ALL'"
       tags:
-        - system
+        - security
 
   tags:
     - init

@@ -1,6 +1,3 @@
 ---
 - name: Set HA mode for queues
-  rabbitmq_policy: name="ha-all" pattern="^(?!amq\.).*"
-  args:
-    tags:
-      "ha-mode": "all"
+  rabbitmq_policy: name="ha-all" pattern=".*" tags="ha-mode=all"

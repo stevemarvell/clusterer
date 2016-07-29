@@ -1,7 +1,9 @@
 ---
 - name: mariadb config
   template: src=mysql_openstack.cnf.j2 dest=/etc/mysql/conf.d/openstack.cnf
-  tags: [ mysql, mariadb, galera, configuration, install ]
+  tags: configuration
 
 # if kludge in template due to lack of "do" statement
+
+
 

@@ -2,13 +2,16 @@
 # http://docs.openstack.org/ha-guide/shared-database.html
 
 - include: galera.yml
+
 - include: iptables.yml
+  tags: security
 
 # include: selinux.yml
 # include: apparmor.yml
 
 # https://github.com/adfinis-sygroup/mariadb-ansible-galera-cluster
-- include: mariadb.yml
 
+- include: mariadb.yml
+  tags: [ mariadb, mysql ]
 
 # need to get all the security lark done 

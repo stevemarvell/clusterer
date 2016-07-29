@@ -1,7 +1,7 @@
 ---
 - name: install rabbitmq-server
   apt: name=rabbitmq-server update_cache=yes
-  tags: [ package, install ]
+  tags: package
   
 - name: copy erlang cookie
   template:
@@ -11,5 +11,5 @@
     group=rabbitmq
     mode=0400
     backup=yes
-  notify: restart rabbitmq-server
-  tags: [ configuration, install ]
+  notify: restart rabbitmq server
+  tags: configuration

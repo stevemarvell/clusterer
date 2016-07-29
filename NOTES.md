@@ -492,3 +492,14 @@ iface enp0s9 inet static
 	address 10.1.2.10
 	netmask 255.255.255.0	
 
+
+
+TODO
+
+Memcache
+Galera/MariaDB/Mysql security
+Galera HA Proxy
+
+General port listening
+
+Rolling updates

@@ -1,14 +1,14 @@
 - name: debconf LXD - does nothing really
   debconf: name='lxd' question='{{ item.question }}' value='{{ item.value }}' vtype='{{ item.vtype }}' 
   with_items: "{{ debconf }}"
-  tags: [ configuration, install ]
+  tags: configuration
 
 - name: insert defaults file
   copy: src=etc/default/lxd-bridge dest=/etc/default/lxd-bridge
-  tags: [ configuration, install ]
+  tags: configuration
   
 - name: install LXD
   apt: name={{ item }} state=present
   with_items:
     - lxd
-  tags: [ package, install ]
+  tags: package
