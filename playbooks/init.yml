@@ -19,7 +19,7 @@
     - name: "system user authorized_keys"
       authorized_key: user=system key="{{ item }}"
       with_file:
-        - ../ansible_rsa.pub
+        - ../ansible/security/ansible_rsa.pub
       tags:
         - security
         
