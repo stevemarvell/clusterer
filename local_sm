@@ -9,6 +9,9 @@ management_iface=enp0s9
 ansible_connection=ssh
 ansible_user=system
 
+[postgresql_cluster]
+server00
+
 [galera_cluster]
 server00
 

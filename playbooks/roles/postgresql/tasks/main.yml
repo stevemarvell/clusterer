@@ -1,0 +1,10 @@
+---
+- name: install postrgesql packages
+  apt: name={{item}} state="present"
+  with_items:
+    - postgresql
+    - libpq-dev
+    - python-psycopg2
+  tags: package
+
+# config files, data locations, extrra config location, listening ports, memecache

@@ -1,0 +1,6 @@
+---
+- name: install maas region controller
+  apt: name="maas-region-controller" state="present"
+  tags: package
+
+  
