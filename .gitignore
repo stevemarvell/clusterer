@@ -12,6 +12,11 @@ ansible_rsa.pub
 # retries
 playbooks/*.retry
 
-# ansible cache
+# ansible directories
 
 ansible/cache
+ansible/security
+
+# inventory
+
+inventory

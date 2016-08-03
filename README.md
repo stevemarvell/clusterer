@@ -32,18 +32,18 @@ ansible_user=system
 
 copy your own or gen
 
-user@master$ ssh-keygen -t rsa -f ansible_rsa  -q -N ""
+user@master$ ssh-keygen -t rsa -f ansible/security/ansible_rsa  -q -N ""
 
 root@master$ apt install software-properties-common
 root@master$ apt-add-repository ppa:ansible/ansible
 root@master$ apt update && apt upgrade
 root@master$ apt install ansible
 
-update "servers" in inventory
+update "servers" in inventory directoru
 
-user@master$ ansible-playbook -i <inventory> --user system --ask-pass --ask-become-pass playbooks/init.yml
+user@master$ ansible-playbook -i inventory/<inventory> --user system --ask-pass --ask-become-pass playbooks/init.yml
 
-user@master$ ansible-playbook -i <inventory> playbooks/site.yml
+user@master$ ansible-playbook -i inventory/<inventory> playbooks/site.yml
 
 ## Contributing
 

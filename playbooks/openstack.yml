@@ -11,6 +11,12 @@
     - postgresql
   tags: [ postgresql, install ]
 
+- name: "Tasks for MaaS control servers"
+  hosts: maas_control
+  roles:
+    - maas_control
+  tags: [ maas, maas_control, install ]
+
 # - name: "Tasks for Galera cluster"
 #   hosts: galera_cluster
 #   roles:

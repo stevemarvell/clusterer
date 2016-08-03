@@ -1,2 +1,3 @@
 ---
-rabbitmq_primary: "{{ hostvars[groups['rabbitmq_cluster'][0]]['ansible_hostname'] }}"
+rabbitmq_primary_hostname: "{{ hostvars[groups['rabbitmq_cluster'][0]]['ansible_hostname'] }}"
+rabbitmq_erlang_cookie: "defaultedcookie"

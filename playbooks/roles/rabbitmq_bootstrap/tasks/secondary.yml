@@ -3,7 +3,7 @@
   command: rabbitmqctl stop_app
  
 - name: join cluster
-  command: "rabbitmqctl join_cluster rabbit@{{ rabbitmq_primary }}"
+  command: "rabbitmqctl join_cluster rabbit@{{ rabbitmq_primary_hostname }}"
   
 - name: start app
   command: rabbitmqctl start_app
