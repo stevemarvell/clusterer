@@ -1,0 +1,140 @@
+The following additional packages will be installed:
+  apache2 apache2-bin apache2-data apache2-utils archdetect-deb authbind bind9 bind9utils curtin-common dbconfig-common
+  dbconfig-pgsql distro-info docutils-common fonts-font-awesome fonts-lato formencode-i18n freeipmi-common freeipmi-tools ieee-data
+  isc-dhcp-server javascript-common libapr1 libaprutil1 libaprutil1-dbd-sqlite3 libaprutil1-ldap libconfig-general-perl
+  libdebian-installer4 libecap3 libfreeipmi16 libibverbs1 libipmiconsole2 libipmidetect0 libirs-export141 libirs141
+  libisccfg-export140 libjbig0 libjpeg-turbo8 libjpeg8 libjs-angularjs libjs-jquery libjs-modernizr libjs-sphinxdoc
+  libjs-underscore libjs-yui3-common libjs-yui3-full libjs-yui3-min liblcms2-2 libltdl7 liblua5.1-0 libpaper-utils libpaper1 libpq5
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib librdmacm1 libsensors4 libsgutils2-2 libtiff5 libwebp5 libwebpmux1
+  libxslt1.1 libyaml-0-2 maas-cli maas-common maas-dhcp maas-dns maas-proxy maas-rack-controller maas-region-api
+  maas-region-controller postgresql postgresql-9.5 postgresql-client postgresql-client-9.5 postgresql-client-common
+  postgresql-common postgresql-contrib-9.5 pxelinux python python-babel-localedata python-django-common python-minimal python2.7
+  python2.7-minimal python3-alabaster python3-attr python3-babel python3-blinker python3-bs4 python3-bson python3-bson-ext
+  python3-cffi-backend python3-convoy python3-crochet python3-crypto python3-cryptography python3-curtin python3-distro-info
+  python3-django python3-django-maas python3-django-piston3 python3-djorm-ext-pgarray python3-dnspython python3-docutils
+  python3-ecdsa python3-formencode python3-html5lib python3-httplib2 python3-idna python3-iso8601 python3-jinja2 python3-jsonschema
+  python3-jwt python3-lxml python3-maas-client python3-maas-provisioningserver python3-markupsafe python3-mimeparse python3-netaddr
+  python3-netifaces python3-oauth python3-oauthlib python3-openssl python3-pam python3-paramiko python3-pbr python3-petname
+  python3-pexpect python3-pil python3-prettytable python3-psycopg2 python3-ptyprocess python3-pyasn1 python3-pyasn1-modules
+  python3-pygments python3-pyparsing python3-pyvmomi python3-roman python3-seamicroclient python3-serial python3-service-identity
+  python3-simplejson python3-simplestreams python3-sphinx python3-sphinx-rtd-theme python3-sqlparse python3-tempita python3-twisted
+  python3-txtftp python3-tz python3-yaml python3-zope.interface sg3-utils sphinx-common sphinx-rtd-theme-common squid squid-common
+  squid-langpack ssl-cert syslinux-common sysstat tgt
+Suggested packages:
+  www-browser apache2-doc apache2-suexec-pristine | apache2-suexec-custom bind9-doc shunit2 freeipmi-ipmidetect
+  freeipmi-bmc-watchdog isc-dhcp-server-ldap policycoreutils liblcms2-utils lm-sensors amtterm ipmitool libvirt-bin wsmancli
+  postgresql-doc locales-all postgresql-doc-9.5 libdbd-pg-perl tftpd-hpa python-doc python-tk python2.7-doc binfmt-support
+  python-blinker-doc python3-crypto-dbg python-crypto-doc python-cryptography-doc python3-cryptography-vectors python3-pymysql
+  python3-flup python3-sqlite python3-memcache python3-bcrypt geoip-database-contrib gettext python-django-doc ipython3 bpython3
+  libgdal1 texlive-latex-recommended texlive-latex-base texlive-lang-french fonts-linuxlibertine | ttf-linux-libertine docutils-doc
+  python3-egenix-mxdatetime python3-genshi python-jinja2-doc python3-lxml-dbg python-lxml-doc python-netaddr-docs
+  python-openssl-doc python3-openssl-dbg python3-pam-dbg python-pexpect-doc python-pil-doc python3-pil-dbg python-psycopg2-doc
+  doc-base ttf-bitstream-vera python-pyvmomi-doc python3-wxgtk3.0 | python3-wxgtk libjs-mathjax dvipng texlive-latex-extra
+  texlive-fonts-recommended sphinx-doc python-sqlparse-doc python3-tk python3-gtk2 python3-glade2 python3-qt4 python3-wxgtk2.8
+  squidclient squid-cgi squid-purge smbclient winbindd openssl-blacklist isag tgt-rbd
+The following NEW packages will be installed
+  apache2 apache2-bin apache2-data apache2-utils archdetect-deb authbind bind9 bind9utils curtin-common dbconfig-common
+  dbconfig-pgsql distro-info docutils-common fonts-font-awesome fonts-lato formencode-i18n freeipmi-common freeipmi-tools ieee-data
+  isc-dhcp-server javascript-common libapr1 libaprutil1 libaprutil1-dbd-sqlite3 libaprutil1-ldap libconfig-general-perl
+  libdebian-installer4 libecap3 libfreeipmi16 libibverbs1 libipmiconsole2 libipmidetect0 libirs-export141 libirs141
+  libisccfg-export140 libjbig0 libjpeg-turbo8 libjpeg8 libjs-angularjs libjs-jquery libjs-modernizr libjs-sphinxdoc
+  libjs-underscore libjs-yui3-common libjs-yui3-full libjs-yui3-min liblcms2-2 libltdl7 liblua5.1-0 libpaper-utils libpaper1 libpq5
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib librdmacm1 libsensors4 libsgutils2-2 libtiff5 libwebp5 libwebpmux1
+  libxslt1.1 libyaml-0-2 maas maas-cli maas-common maas-dhcp maas-dns maas-proxy maas-rack-controller maas-region-api
+  maas-region-controller postgresql postgresql-9.5 postgresql-client postgresql-client-9.5 postgresql-client-common
+  postgresql-common postgresql-contrib-9.5 pxelinux python python-babel-localedata python-django-common python-minimal python2.7
+  python2.7-minimal python3-alabaster python3-attr python3-babel python3-blinker python3-bs4 python3-bson python3-bson-ext
+  python3-cffi-backend python3-convoy python3-crochet python3-crypto python3-cryptography python3-curtin python3-distro-info
+  python3-django python3-django-maas python3-django-piston3 python3-djorm-ext-pgarray python3-dnspython python3-docutils
+  python3-ecdsa python3-formencode python3-html5lib python3-httplib2 python3-idna python3-iso8601 python3-jinja2 python3-jsonschema
+  python3-jwt python3-lxml python3-maas-client python3-maas-provisioningserver python3-markupsafe python3-mimeparse python3-netaddr
+  python3-netifaces python3-oauth python3-oauthlib python3-openssl python3-pam python3-paramiko python3-pbr python3-petname
+  python3-pexpect python3-pil python3-prettytable python3-psycopg2 python3-ptyprocess python3-pyasn1 python3-pyasn1-modules
+  python3-pygments python3-pyparsing python3-pyvmomi python3-roman python3-seamicroclient python3-serial python3-service-identity
+  python3-simplejson python3-simplestreams python3-sphinx python3-sphinx-rtd-theme python3-sqlparse python3-tempita python3-twisted
+  python3-txtftp python3-tz python3-yaml python3-zope.interface sg3-utils sphinx-common sphinx-rtd-theme-common squid squid-common
+  squid-langpack ssl-cert syslinux-common sysstat tgt
+0 to upgrade, 164 to newly install, 0 to remove and 30 not to upgrade.
+Need to get 43.9 MB of archives.
+After this operation, 205 MB of additional disk space will be used.
+
+======================================================
+  maas/password: (password omitted)
+  maas-rack-controller/shared-secret: (password omitted)
+  maas/installation-note: false
+  maas/username:
+  maas-rack-controller/maas-url: http://localhost:5240/MAAS
+  maas/default-maas-url: 10.0.2.15
+
+  maas-rack-controller/shared-secret: (password omitted)
+  maas-rack-controller/maas-url: http://localhost:5240/MAAS
+  
+  maas-region-controller/password-confirm: (password omitted)
+  maas/password: (password omitted)
+  maas-region-controller/pgsql/admin-pass: (password omitted)
+  maas-region-controller/app-password-confirm: (password omitted)
+  maas-region-controller/remote/port:
+  maas/username:
+  maas-region-controller/install-error: abort
+  maas-region-controller/internal/skip-preseed: false
+  maas/default-maas-url: 10.0.2.15
+  maas-region-controller/passwords-do-not-match:
+  maas-region-controller/remove-error: abort
+  maas-region-controller/purge: false
+  maas-region-controller/remote/newhost: localhost
+* maas-region-controller/remote/host: localhost
+  maas-region-controller/db/dbname: maasdb
+  maas-region-controller/pgsql/authmethod-admin: ident
+  maas-region-controller/pgsql/method: TCP/IP
+  maas-region-controller/internal/reconfiguring: false
+  maas-region-controller/dbconfig-reinstall: false
+  maas-region-controller/missing-db-package-error: abort
+  maas-region-controller/dbconfig-remove: true
+  maas-region-controller/pgsql/admin-user: postgres
+  maas-region-controller/pgsql/app-pass: (password omitted)
+  maas/installation-note: false
+  maas-region-controller/pgsql/changeconf: false
+  maas-region-controller/upgrade-backup: true
+  maas-region-controller/database-type: pgsql
+  maas-region-controller/pgsql/manualconf:
+* maas-region-controller/dbconfig-install: true
+  maas-region-controller/dbconfig-upgrade: true
+  maas-region-controller/db/app-user: maas
+  maas-region-controller/upgrade-error: abort
+  maas-region-controller/pgsql/no-empty-passwords:
+  maas-region-controller/pgsql/authmethod-user: password
+
+======================================================
+
+(from ssh to)
+
+tcp        0      0 10.1.2.21:domain        *:*                     LISTEN     
+tcp        0      0 10.0.2.15:domain        *:*                     LISTEN     
+tcp        0      0 localhost:domain        *:*                     LISTEN     
+tcp        0      0 *:ssh                   *:*                     LISTEN     
+tcp        0      0 *:5240                  *:*                     LISTEN     
+tcp        0      0 *:5240                  *:*                     LISTEN     
+tcp        0      0 *:5240                  *:*                     LISTEN     
+tcp        0      0 *:5240                  *:*                     LISTEN     
+tcp        0      0 localhost:postgresql    *:*                     LISTEN     
+tcp        0      0 localhost:953           *:*                     LISTEN     
+tcp        0      0 localhost:954           *:*                     LISTEN     
+tcp        0      0 *:iscsi-target          *:*                     LISTEN     
+tcp        0      0 *:5248                  *:*                     LISTEN     
+tcp        0      0 *:5250                  *:*                     LISTEN     
+tcp        0      0 *:5251                  *:*                     LISTEN     
+tcp        0      0 *:5252                  *:*                     LISTEN     
+tcp        0      0 *:5253                  *:*                     LISTEN     
+tcp6       0      0 [::]:http               [::]:*                  LISTEN     
+tcp6       0      0 [::]:domain             [::]:*                  LISTEN     
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN     
+tcp6       0      0 [::]:3128               [::]:*                  LISTEN     
+tcp6       0      0 localhost:postgresql    [::]:*                  LISTEN     
+tcp6       0      0 [::]:iscsi-target       [::]:*                  LISTEN     
+tcp6       0      0 [::]:8000               [::]:*                  LISTEN     
+
+
+
+======================================================
+
+======================================================
