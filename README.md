@@ -39,9 +39,11 @@ root@master$ apt-add-repository ppa:ansible/ansible
 root@master$ apt update && apt upgrade
 root@master$ apt install ansible
 
-update "servers" in inventory directoru
+update "servers" in inventory directory
 
 user@master$ ansible-playbook -i inventory/<inventory> --user system --ask-pass --ask-become-pass playbooks/init.yml
+
+user@master$ ansible-playbook -i inventory/<inventory> -l maas_control playbooks/maas.yml
 
 user@master$ ansible-playbook -i inventory/<inventory> playbooks/site.yml
 

@@ -33,6 +33,9 @@ server01
 server03
 Server02
 
+[maas_region]
+server03
+
 [maas_control]
 server02
 server03

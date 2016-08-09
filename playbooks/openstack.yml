@@ -5,18 +5,6 @@
     - openstack
   tags: [ install ]
 
-- name: "Tasks for all Postgres servers"
-  hosts: postgresql_cluster
-  roles:
-    - postgresql
-  tags: [ postgresql, install ]
-
-- name: "Tasks for MaaS control servers"
-  hosts: maas_control
-  roles:
-    - maas_control
-  tags: [ maas, maas_control, install ]
-
 # - name: "Tasks for Galera cluster"
 #   hosts: galera_cluster
 #   roles:

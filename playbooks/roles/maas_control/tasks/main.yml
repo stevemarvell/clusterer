@@ -5,7 +5,7 @@
     - maas-rack-controller
   tags: package
 
-- name: install secret
+- name: install shared secret
   shell: echo {{maas_secret}} | maas-rack install-shared-secret
   tags: configuration
   

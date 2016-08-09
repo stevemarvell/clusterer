@@ -1,0 +1,8 @@
+---
+- name: "all servers"  
+  include: servers.yml
+  
+- name: "maas servers"
+  include: maas_control.yml
+  tags: [ maas, maas_control ]
+
