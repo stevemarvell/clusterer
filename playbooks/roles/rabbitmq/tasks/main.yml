@@ -13,3 +13,4 @@
     backup=yes
   notify: restart rabbitmq server
   tags: configuration
+
