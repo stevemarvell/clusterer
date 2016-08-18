@@ -1,0 +1,7 @@
+---
+- name: memcached package
+  apt: name=memcached state=present
+  tags: package
+
+- name: memcached run on startup
+  service: name=memcached state=started enabled=yes

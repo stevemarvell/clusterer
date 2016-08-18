@@ -4,6 +4,7 @@
 - include: ntp.yml
   tags: ntp
 
-# include: memcache.yml
+- include: memcache.yml
+  tags: memcache
 # https://github.com/geerlingguy/ansible-role-memcached
 # http://docs.openstack.org/ha-guide/environment-memcached.html 
