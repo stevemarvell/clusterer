@@ -1,0 +1,10 @@
+---
+- name: Pacemaker ports
+  include: iptables.yml
+  tags: security
+
+- name: Pacemaker using pcsd
+  include: pcs.yml
+  tags: pcs
+
+

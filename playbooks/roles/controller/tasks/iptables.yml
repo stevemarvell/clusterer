@@ -1,0 +1,37 @@
+---
+- name: install iptables-persistent
+  apt: name=iptables-persistent state=present
+  tags: package
+
+- name: iptables Corosync port 5404 for multicast
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=udp match=udp destination_port=5404 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="Corosync Port 5404 for multicast"
+  with_items: "{{ play_hosts }}"
+  tags: configuration
+
+- name: iptables Corosync port 5405 for multicast
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=udp match=udp destination_port=5405 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="Corosync Port 5405 for multicast"
+  with_items: "{{ play_hosts }}"
+  tags: configuration
+
+- name: iptables PCS port 2224
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=tcp match=tcp destination_port=2224 source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="PCS Port 2224"
+  with_items: "{{ play_hosts }}"
+  tags: configuration
+
+- name: iptables IGMP
+  iptables: chain=INPUT in_interface={{ management_iface }} protocol=igmp source={{ hostvars[item]['ansible_ssh_host'] }} jump=ACCEPT comment="IGMP"
+  with_items: "{{ play_hosts }}"
+  tags: configuration
+
+- name: iptables allow multicast
+  command: "iptables -I INPUT -i {{ management_iface }} -m addrtype -s {{ hostvars[item]['ansible_ssh_host'] }} -j ACCEPT --dst-type MULTICAST"
+  with_items: "{{ play_hosts }}"
+  tags:
+    - configuration
+      kludge
+
+- name: save iptables
+  shell: "service netfilter-persistent save"
+  tags: service   
+
+  

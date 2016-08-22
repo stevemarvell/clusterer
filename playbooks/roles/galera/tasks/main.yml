@@ -3,8 +3,8 @@
 
 - include: galera.yml
 
-- include: iptables.yml
-  tags: security
+#- include: iptables.yml
+#  tags: security
 
 # include: selinux.yml
 # include: apparmor.yml

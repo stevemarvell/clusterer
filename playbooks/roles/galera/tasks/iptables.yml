@@ -1,6 +1,6 @@
 ---
 - name: install iptables-persistent
-  apt: pkg=iptables-persistent state=present
+  apt: name=iptables-persistent state=present
   tags: package
 
 - name: iptables MariaDB port 3306

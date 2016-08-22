@@ -5,11 +5,11 @@
     - openstack
   tags: [ install ]
 
-- name: "Tasks for Galera cluster"
-  hosts: galera_cluster
-  roles:
-    - galera
-  tags: [ galera, install ]
+#- name: "Tasks for Galera cluster"
+#  hosts: galera_cluster
+#  roles:
+#    - galera
+#  tags: [ galera, install ]
 
 # # - name: "Start Galera cluster"
 # #   hosts: galera_cluster
@@ -18,11 +18,11 @@
 # #     - galera_bootstrap
 # #   tags: [ galera, bootstrap ]
 
-- name: "Tasks for RabbitMQ"
-  hosts: rabbitmq_cluster
-  roles:
-    - rabbitmq
-  tags: [ rabbitmq, install ]
+#- name: "Tasks for RabbitMQ"
+#  hosts: rabbitmq_cluster
+#  roles:
+#    - rabbitmq
+#  tags: [ rabbitmq, install ]
 
 # - name: "Start RabbitMQ cluster"
 #   hosts: rabbitmq_cluster
@@ -30,3 +30,10 @@
 #   roles:
 #     - rabbitmq_bootstrap
 #   tags: [ rabbitmq, bootstrap ]
+
+- name: "Tasks for Controllers"
+  hosts: controllers
+  roles:
+    - controller
+  tags: [ controller, install ]
+

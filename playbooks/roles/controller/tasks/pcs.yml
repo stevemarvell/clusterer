@@ -1,0 +1,45 @@
+---
+- name: Install pcs and all of its associated packages
+  apt: name={{item}} state=present
+  tags: package
+  with_items:
+    - pcs
+
+- name: Install missing ruby gem
+  gem: name=orderedhash state=present
+  tags: 
+    - package
+      kludge
+
+- name: Enable and start pcsd
+  service: name=pcsd state=started enabled=yes
+  tags: service
+
+- name: Set cluster passwd
+  user: name=hacluster password="{{ hacluster_passwd }}"
+  tags: auth
+
+- name: Cluster auth
+  command: pcs cluster auth
+    {% set space = joiner(" ") %}
+    {% for item in play_hosts -%}
+    {{ space() }}{{ hostvars[item].ansible_hostname }}
+    {%- endfor %} --force -u hacluster -p {{ hacluster_passwd }}
+  tags: auth
+
+- name: Cluster setup
+  command: pcs cluster setup 
+    {% set space = joiner(" ") %}
+    {% for item in play_hosts -%}
+    {{ space() }}{{ hostvars[item].ansible_hostname }}
+    {%- endfor %} --force --name {{ pcs_cluster_name }}
+  tags: configuration
+
+- name: Cluster start
+  command: pcs cluster start --all
+  tags: service
+
+- name: VIP
+  command: pcs resource create vip ocf:heartbeat:IPaddr2 
+    params ip="{{ control_vip }}" cidr_netmask="{{ control_netmask }}" op monitor interval="10s"
+  tags: vip

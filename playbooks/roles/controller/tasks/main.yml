@@ -1,0 +1,4 @@
+---
+- name: Pacemaker
+  include: pacemaker.yml
+  tags: pacemaker

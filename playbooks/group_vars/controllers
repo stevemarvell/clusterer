@@ -1,0 +1,5 @@
+---
+pcs_cluster_name: control_pacemaker
+hacluster_passwd: "keepitsecret"
+control_vip: 99.0.0.100
+control_netmask: 24
