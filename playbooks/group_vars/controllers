@@ -1,5 +1,7 @@
 ---
 pcs_cluster_name: control_pacemaker
-hacluster_passwd: "keepitsecret"
+# created with python -c 'import crypt; print crypt.crypt("keepitsecret", "$1$124816$")'
+hacluster_passwd: keepitsecret
+hacluster_passwd_hash: $1$124816$NJqcG6uq0bEBzQO7h08T8/
 control_vip: 99.0.0.100
 control_netmask: 24

@@ -16,7 +16,7 @@
   tags: service
 
 - name: Set cluster passwd
-  user: name=hacluster password="{{ hacluster_passwd }}"
+  user: name=hacluster password="{{ hacluster_passwd_hash }}"
   tags: auth
 
 - name: Cluster auth
