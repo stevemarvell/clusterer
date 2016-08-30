@@ -1,0 +1,10 @@
+Ultimately this will have ssl cert and remain unhooked from the outdie work.
+
+10.0.0.51 managment facing
+99.0.0.51 internet facing
+99.0.0.1 gateway
+192.168.0.1 dns
+
+apt install maas
+
+maas createadmin
