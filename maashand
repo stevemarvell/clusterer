@@ -1,10 +1,42 @@
-Ultimately this will have ssl cert and remain unhooked from the outdie work.
 
 10.0.0.51 managment facing
 99.0.0.51 internet facing
 99.0.0.1 gateway
 192.168.0.1 dns
 
-apt install maas
+root# add-apt-repository ppa:maas/stable
+root# apt update
+root# apt install maas
 
-maas createadmin
+root# maas createadmin
+
+(unless being done elsewhere as part of ansible init)
+system# ssh-keygen
+
+http://99.0.0.51/MAAS
+
+There will be ways to do this by command line (probably using the MAAS key from the account page below)
+
+http://99.0.0.51/MAAS/account/prefs/
+
+SSH
+SSL (in the future)
+
+http://99.0.0.51/MAAS/settings/
+
+(upstream DNS)
+
+http://99.0.0.51/MAAS/#/networks?by=fabric
+
+fabric-1  untagged 99.0.0.0/24 (click on that)
+
+Set DNS
+
+Return to networks and click on "untagged" in vlan colum of external facing fabric
+
+Take action -> Provide DHCP
+
+http://99.0.0.51/MAAS/images/
+
+Apply changes (just in case)
+
