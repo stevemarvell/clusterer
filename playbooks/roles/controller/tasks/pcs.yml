@@ -6,7 +6,9 @@
     - pcs
 
 - name: Install missing ruby gem
-  gem: name=orderedhash state=present
+  shell: gem install orderedhash
+# not even this works
+  #  gem: name=orderedhash state=present
   tags: 
     - package
       kludge

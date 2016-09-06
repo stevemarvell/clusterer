@@ -8,6 +8,7 @@ root# add-apt-repository ppa:maas/stable
 root# apt update
 root# apt install maas
 
+add-apt-repository ppa:ubuntu-lxc/lxd-stable
 root# maas createadmin
 
 (unless being done elsewhere as part of ansible init)
@@ -38,5 +39,16 @@ Take action -> Provide DHCP
 
 http://99.0.0.51/MAAS/images/
 
-Apply changes (just in case)
+sudo apt-add-repository ppa:conjure-up/next
+sudo apt-add-repository ppa:juju/devel
 
+sudo apt update
+sudo apt upgrade
+
+sudo lxd init
+sudo lxc finger
+
+lxc image copy ubuntu:xenial local: --alias ubuntu-xenial
+
+sudo apt install conjure-up
+conjure-up openstack
