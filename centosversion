@@ -1,0 +1,90 @@
+[system@server03 ~]$ su -
+Password: 
+
+[root@server03 system]# vi /etc/sysconfig/network-scripts/ifcfg-eno1 
+[root@server03 system]# diff ~/ifcfg-eno1 /etc/sysconfig/network-scripts/ifcfg-eno1  
+2c2
+< BOOTPROTO="dhcp"
+---
+> BOOTPROTO="none"
+5a6,10
+> NETWORK=192.168.0.0
+> NETMASK=255.255.255.0
+> IPADDR=192.168.0.83
+> GATEWAY=192.168.0.1
+> USERCTL=no
+16a22,24
+> DNS1=192.168.0.1
+> DNS2=8.8.8.8
+> PEERDNS=yes
+
+[root@server03 ~]$ service network restart
+
+[root@server03 ~]$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether b8:ae:ed:ea:f1:42 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.83/24 brd 192.168.0.255 scope global eno1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::baae:edff:feea:f142/64 scope link 
+       valid_lft forever preferred_lft forever
+3: enp0s20f0u3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 74:da:38:4a:1f:b9 brd ff:ff:ff:ff:ff:ff
+
+[root@server03 ~]# systemctl disable NetworkManager
+Removed symlink /etc/systemd/system/multi-user.target.wants/NetworkManager.service.
+Removed symlink /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service.
+Removed symlink /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service.
+[root@server03 ~]# systemctl stop NetworkManager
+[root@server03 ~]# systemctl enable network
+network.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig network on
+[root@server03 ~]# systemctl start network
+
+[root@server03 ~]# visudo
+[root@server03 ~]# grep wheel /etc/sudoers
+...
+## Allows people in group wheel to run all commands
+# %wheel	ALL=(ALL)	ALL
+%wheel	ALL=(ALL)	NOPASSWD: ALL
+...
+[root@server03 ~]# usermod -g wheel system
+
+[system@server03 ~]$ newgrp wheel
+[system@server03 ~]$ groups
+wheel system
+
+
+[system@server03 ~]$ sudo yum install -y centos-release-openstack-mitaka
+[system@server03 ~]$ sudo yum update -y
+[system@server03 ~]$ sudo yum install -y openstack-packstack
+[system@server03 ~]$ packstack --allinone
+
+ **** Installation completed successfully ******
+
+Additional information:
+ * A new answerfile was created in: /home/system/packstack-answers-20160907-174935.txt
+ * Time synchronization installation was skipped. Please note that unsynchronized time on server instances might be problem for some OpenStack components.
+ * File /root/keystonerc_admin has been created on OpenStack client host 192.168.0.83. To use the command line tools you need to source the file.
+ * Copy of keystonerc_admin file has been created for non-root user in /home/system.
+ * To access the OpenStack Dashboard browse to http://192.168.0.83/dashboard .
+Please, find your login credentials stored in the keystonerc_admin in your home directory.
+ * To use Nagios, browse to http://192.168.0.83/nagios username: nagiosadmin, password: 478b55e0fb524fde
+ * Because of the kernel update the host 192.168.0.83 requires reboot.
+ * The installation log file is available at: /var/tmp/packstack/20160907-174934-aIRZ_n/openstack-setup.log
+ * The generated manifests are available at: /var/tmp/packstack/20160907-174934-aIRZ_n/manifests
+
+[system@server03 ~]$ cat keystonerc_admin 
+unset OS_SERVICE_TOKEN
+export OS_USERNAME=admin
+export OS_PASSWORD=666fbadfeb7d4b42
+export OS_AUTH_URL=http://192.168.0.83:5000/v2.0
+export PS1='[\u@\h \W(keystone_admin)]\$ '
+
+export OS_TENANT_NAME=admin
+export OS_REGION_NAME=RegionOne
